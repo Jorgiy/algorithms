@@ -17,7 +17,8 @@ namespace Algorithms.Tests
             sortingAlgorithm.Sort(arrayForSorting);
 
             // assert
-            // TODO:insert collection checking assertion
+            var sortedArray = new[] { 0, 1, 2, 4, 5, 6, 7, 8, 12, 98, 123 };
+            Assert.Equal(sortedArray, arrayForSorting, new EnumerableEqualityComparer<int>());
         }
     }
 }

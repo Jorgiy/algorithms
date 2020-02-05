@@ -1,0 +1,18 @@
+﻿namespace Algorithms.Core.DataStructures
+{
+    public class Node<T>
+    {
+        public Node()
+        {
+        }
+
+        public Node(T data)
+        {
+            Data = data;
+        }
+
+        public T Data { get; set; }
+
+        public Node<T> Next { get; set; }
+    }
+}
