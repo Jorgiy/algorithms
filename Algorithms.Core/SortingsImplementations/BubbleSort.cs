@@ -1,10 +1,10 @@
-﻿namespace Algorithms.Core
+﻿namespace Algorithms.Core.SortingsImplementations
 {
     using System.Collections.Generic;
 
-    public static class BubbleSort
+    public class BubbleSort<T> : ISortingAlgorithm<T>
     {
-        public static void Sort<T>(IList<T> collectionToSort, IComparer<T> comparer = null)
+        public void Sort(IList<T> collectionToSort, IComparer<T> comparer = null)
         {
             if (comparer == null)
             {
