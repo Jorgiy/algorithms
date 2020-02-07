@@ -2,11 +2,13 @@
 {
     using System.Collections.Generic;
 
-    public class Graph<T>
+    public class SimpleGraph<T> : IGraph<T>
     {
-        public Graph() { }
+        public SimpleGraph()
+        {
+        }
 
-        public Graph(IEnumerable<T> vertices, IEnumerable<Edge<T>> edges)
+        public SimpleGraph(IEnumerable<T> vertices, IEnumerable<Edge<T>> edges)
         {
             foreach (var vertex in vertices)
             {
@@ -32,6 +34,25 @@
             {
                 Adjacencies[edge.Vertex1].Add(edge.Vertex2);
                 Adjacencies[edge.Vertex2].Add(edge.Vertex1);
+            }
+        }
+
+        public void RemoveVertex(T vertex)
+        {
+            Adjacencies.Remove(vertex);
+
+            foreach (var adjacency in Adjacencies)
+            {
+                adjacency.Value.Remove(vertex);
+            }
+        }
+
+        public void DeleteEdge(Edge<T> edge)
+        {
+            if (Adjacencies.ContainsKey(edge.Vertex1) && Adjacencies.ContainsKey(edge.Vertex2))
+            {
+                Adjacencies[edge.Vertex1].Remove(edge.Vertex2);
+                Adjacencies[edge.Vertex2].Remove(edge.Vertex1);
             }
         }
     }

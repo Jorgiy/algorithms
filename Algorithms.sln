@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28803.156
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Algorithms.App", "Algorithms.App\Algorithms.App.csproj", "{F622B5CE-06A4-4EE1-97AF-A3DB214C285C}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Algorithms.Core", "Algorithms.Core\Algorithms.Core.csproj", "{C7155C3A-8786-4E3E-B048-6A4B4D2B9981}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A11C597D-868E-4F16-91FB-12477AB3486A}"
@@ -12,7 +10,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Algorithms.Tests", "Algorithms.Tests\Algorithms.Tests.csproj", "{A3BBF69E-918F-4449-A319-88093D0CB159}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Algorithms.Tests", "Algorithms.Tests\Algorithms.Tests.csproj", "{A3BBF69E-918F-4449-A319-88093D0CB159}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,10 +18,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{F622B5CE-06A4-4EE1-97AF-A3DB214C285C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F622B5CE-06A4-4EE1-97AF-A3DB214C285C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F622B5CE-06A4-4EE1-97AF-A3DB214C285C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F622B5CE-06A4-4EE1-97AF-A3DB214C285C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C7155C3A-8786-4E3E-B048-6A4B4D2B9981}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C7155C3A-8786-4E3E-B048-6A4B4D2B9981}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C7155C3A-8786-4E3E-B048-6A4B4D2B9981}.Release|Any CPU.ActiveCfg = Release|Any CPU
