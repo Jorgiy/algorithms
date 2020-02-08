@@ -2,7 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
-    using Algorithms.Core.SortingsImplementations;
+    using Algorithms.Core.SortingsAlgorithms;
 
     public class SortingAlgorithmBuilder<T>
     {

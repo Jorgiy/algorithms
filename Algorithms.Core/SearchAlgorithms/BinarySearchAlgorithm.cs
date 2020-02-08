@@ -5,20 +5,13 @@
 
     public class BinarySearchAlgorithm<T>
     {
-        private readonly IComparer<T> _comparer;
-
-        public BinarySearchAlgorithm()
+        public BinarySearchAlgorithmResult Search(IList<T> listForSearch, T searchingElement, IComparer<T> comparer = null)
         {
-            _comparer = Comparer<T>.Default;
-        }
+            if (comparer == null)
+            {
+                comparer = Comparer<T>.Default;
+            }
 
-        public BinarySearchAlgorithm(IComparer<T> comparer)
-        {
-            _comparer = comparer;
-        }
-
-        public BinarySearchAlgorithmResult Search(IList<T> listForSearch, T searchingElement)
-        {
             if (listForSearch == null || listForSearch.Count == 0)
             {
                 return new BinarySearchAlgorithmResult(false);
@@ -38,12 +31,18 @@
                 return new BinarySearchAlgorithmResult(true, indexOfTheMiddleElement);
             }
 
-            if (_comparer.Compare(listForSearch[indexOfTheMiddleElement], searchingElement) > 1)
+            if (comparer.Compare(listForSearch[indexOfTheMiddleElement], searchingElement) > 1)
             {
-                return Search(listForSearch.Take(listForSearch.Count - indexOfTheMiddleElement - 2).ToArray(), searchingElement);
+                return Search(
+                    listForSearch.Take(listForSearch.Count - indexOfTheMiddleElement - 2).ToArray(),
+                    searchingElement,
+                    comparer);
             }
 
-            return Search(listForSearch.Skip(indexOfTheMiddleElement == 0 ? 1 : indexOfTheMiddleElement).ToArray(), searchingElement);
+            return Search(
+                listForSearch.Skip(indexOfTheMiddleElement == 0 ? 1 : indexOfTheMiddleElement).ToArray(),
+                searchingElement,
+                comparer);
         }
     }
 }

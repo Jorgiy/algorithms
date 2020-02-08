@@ -1,4 +1,4 @@
-﻿namespace Algorithms.Core.SortingsImplementations
+﻿namespace Algorithms.Core.SortingsAlgorithms
 {
     using System.Collections.Generic;
 
