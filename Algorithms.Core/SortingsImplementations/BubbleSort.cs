@@ -4,22 +4,22 @@
 
     public class BubbleSort<T> : ISortingAlgorithm<T>
     {
-        public void Sort(IList<T> collectionToSort, IComparer<T> comparer = null)
+        public void Sort(IList<T> listToSort, IComparer<T> comparer = null)
         {
             if (comparer == null)
             {
                 comparer = Comparer<T>.Default;
             }
 
-            for (var i = 0; i <= collectionToSort.Count - 2; i++)
+            for (var i = 0; i <= listToSort.Count - 2; i++)
             {
-                for (var j = 0; j <= collectionToSort.Count - 2; j++)
+                for (var j = 0; j <= listToSort.Count - 2; j++)
                 {
-                    if (comparer.Compare(collectionToSort[j], collectionToSort[j + 1]) > 0)
+                    if (comparer.Compare(listToSort[j], listToSort[j + 1]) > 0)
                     {
-                        var temporaryElement = collectionToSort[j + 1];
-                        collectionToSort[j + 1] = collectionToSort[j];
-                        collectionToSort[j] = temporaryElement;
+                        var temporaryElement = listToSort[j + 1];
+                        listToSort[j + 1] = listToSort[j];
+                        listToSort[j] = temporaryElement;
                     }
                 }
             }

@@ -16,6 +16,6 @@
 
         public bool Success { get; }
 
-        public HashSet<T> Route => Success ? _route : throw new Exception(BreadthFirstNotFoundResultErrorMessage);
+        public HashSet<T> Route => Success ? _route : throw new Exception(UnsuccessfulSearchResult);
     }
 }

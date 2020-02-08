@@ -6,6 +6,6 @@
 
         public const string StackErrorMessage = "Stack underflow";
 
-        public const string BreadthFirstNotFoundResultErrorMessage = "Result of search is unsuccessful";
+        public const string UnsuccessfulSearchResult = "Result of search is unsuccessful";
     }
 }

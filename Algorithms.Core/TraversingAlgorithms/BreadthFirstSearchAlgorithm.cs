@@ -3,7 +3,6 @@
     using System.Collections.Generic;
     using System.Linq;
     using Algorithms.Core.DataStructures;
-    using Algorithms.Core.SortingsImplementations;
 
     public class BreadthFirstSearchAlgorithm : ITraversingAlgorithm
     {

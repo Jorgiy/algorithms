@@ -4,6 +4,6 @@
 
     public interface ISortingAlgorithm<T>
     {
-        void Sort(IList<T> collectionToSort, IComparer<T> comparer = null);
+        void Sort(IList<T> listToSort, IComparer<T> comparer = null);
     }
 }
