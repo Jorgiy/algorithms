@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using static Constants;
 
     public class BreadthFirstSearchResult<T>
     {
@@ -15,6 +16,6 @@
 
         public bool Success { get; }
 
-        public HashSet<T> Route => Success ? _route : throw new Exception("Result of search is unsuccessful");
+        public HashSet<T> Route => Success ? _route : throw new Exception(BreadthFirstNotFoundResultErrorMessage);
     }
 }
