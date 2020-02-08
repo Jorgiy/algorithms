@@ -1,12 +1,22 @@
 namespace Algorithms.Tests
 {
+    using System;
+    using System.Collections.Generic;
     using Algorithms.Core;
     using Xunit;
 
     public class SortingAlgorithmTests
     {
+        public static IEnumerable<object[]> GetSearchingAlgorithms()
+        {
+            foreach (var sortingAlgorithmType in Enum.GetValues(typeof(SortingAlgorithmType)))
+            {
+                yield return new[] { sortingAlgorithmType };
+            }
+        }
+
         [Theory]
-        [InlineData(SortingAlgorithmType.Bubble)]
+        [MemberData(nameof(GetSearchingAlgorithms))]
         public void Sort_PassArrayOfIntegers_SortedProperly(SortingAlgorithmType sortingAlgorithmType)
         {
             // arrange

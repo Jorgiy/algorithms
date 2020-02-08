@@ -1,48 +1,82 @@
 ﻿namespace Algorithms.Core.SearchAlgorithms
 {
     using System.Collections.Generic;
-    using System.Linq;
 
     public class BinarySearchAlgorithm<T>
     {
-        public BinarySearchAlgorithmResult Search(IList<T> listForSearch, T searchingElement, IComparer<T> comparer = null)
-        {
-            if (comparer == null)
-            {
-                comparer = Comparer<T>.Default;
-            }
+        private readonly IComparer<T> _comparer;
 
+        public BinarySearchAlgorithm()
+        {
+            _comparer = Comparer<T>.Default;
+        }
+
+        public BinarySearchAlgorithm(IComparer<T> comparer)
+        {
+            _comparer = comparer;
+        }
+
+        public BinarySearchAlgorithmResult Search(IList<T> listForSearch, T searchingElement)
+        {
             if (listForSearch == null || listForSearch.Count == 0)
             {
                 return new BinarySearchAlgorithmResult(false);
             }
 
-            if (listForSearch.Count == 1)
+            return Search(new SearchInput
             {
-                return listForSearch.First().Equals(searchingElement)
-                    ? new BinarySearchAlgorithmResult(true, 0)
+                ListForSearch = listForSearch,
+                LeftBoundIndex = 0,
+                RightBoundIndex = listForSearch.Count - 1,
+                SearchingElement = searchingElement
+            });
+        }
+
+        private BinarySearchAlgorithmResult Search(SearchInput searchInput)
+        {
+            if (searchInput.LeftBoundIndex == searchInput.RightBoundIndex)
+            {
+                return searchInput.ListForSearch[searchInput.RightBoundIndex].Equals(searchInput.SearchingElement)
+                    ? new BinarySearchAlgorithmResult(true, searchInput.RightBoundIndex)
                     : new BinarySearchAlgorithmResult(false);
             }
 
-            var indexOfTheMiddleElement = (listForSearch.Count - 1) / 2;
+            var indexOfTheMiddleElement = searchInput.LeftBoundIndex + (searchInput.RightBoundIndex - searchInput.LeftBoundIndex) / 2;
 
-            if (listForSearch[indexOfTheMiddleElement].Equals(searchingElement))
+            if (searchInput.ListForSearch[indexOfTheMiddleElement].Equals(searchInput.SearchingElement))
             {
                 return new BinarySearchAlgorithmResult(true, indexOfTheMiddleElement);
             }
 
-            if (comparer.Compare(listForSearch[indexOfTheMiddleElement], searchingElement) > 1)
+            if (_comparer.Compare(searchInput.ListForSearch[indexOfTheMiddleElement], searchInput.SearchingElement) > 0)
             {
-                return Search(
-                    listForSearch.Take(listForSearch.Count - indexOfTheMiddleElement - 2).ToArray(),
-                    searchingElement,
-                    comparer);
+                return Search(new SearchInput
+                {
+                    ListForSearch = searchInput.ListForSearch,
+                    LeftBoundIndex = searchInput.LeftBoundIndex,
+                    RightBoundIndex = indexOfTheMiddleElement - 1,
+                    SearchingElement = searchInput.SearchingElement
+                });
             }
 
-            return Search(
-                listForSearch.Skip(indexOfTheMiddleElement == 0 ? 1 : indexOfTheMiddleElement).ToArray(),
-                searchingElement,
-                comparer);
+            return Search(new SearchInput
+            {
+                ListForSearch = searchInput.ListForSearch,
+                LeftBoundIndex = indexOfTheMiddleElement + 1,
+                RightBoundIndex = searchInput.RightBoundIndex,
+                SearchingElement = searchInput.SearchingElement
+            });
+        }
+
+        private struct SearchInput
+        {
+            public IList<T> ListForSearch { get; set; }
+
+            public T SearchingElement { get; set; }
+
+            public int LeftBoundIndex { get; set; }
+
+            public int RightBoundIndex { get; set; }
         }
     }
 }
