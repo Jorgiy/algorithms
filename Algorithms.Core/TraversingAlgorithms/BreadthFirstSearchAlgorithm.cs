@@ -94,7 +94,7 @@
             }
 
             shortestPath.Add(startVertex);
-            shortestPath = shortestPath.Reverse().ToHashSet();
+            shortestPath = new HashSet<T>(shortestPath.Reverse());
 
             return new BreadthFirstSearchResult<T>(true, shortestPath);
         }
