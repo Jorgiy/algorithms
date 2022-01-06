@@ -10,8 +10,8 @@
 
         void AddEdge(Edge<T> edge);
 
-        void RemoveVertex(T vertex);
+        bool RemoveVertex(T vertex);
 
-        void DeleteEdge(Edge<T> edge);
+        void RemoveEdge(Edge<T> edge);
     }
 }
